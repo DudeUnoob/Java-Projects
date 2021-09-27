@@ -1,11 +1,10 @@
 //CODED BY @DudeUnoob :)
-
 import java.util.Scanner;
 import java.lang.Math;
 
 public class Bank{
-  public double money = 0.0;
-  public String bank = "Chase";
+  public static double money = 0.0;
+  public static String bank = "Chase DudeUnoob";
 
   
    public void deposit(double amountDeposited) {
@@ -23,6 +22,7 @@ public class Bank{
   }
 
   public static void main(String[] args){
+    System.out.println("Hello welcome to the " + bank + " bank!");
       Bank bank = new Bank();
       Scanner input = new Scanner(System.in);
 
@@ -49,25 +49,37 @@ public class Bank{
       double moni = myBank.nextDouble();
       bank.deposit(moni);
 
-      System.out.println("You have " + bank.getBalance());
+      System.out.println("You have " + bank.getBalance() + " dollars");
     }
     else {
       System.out.println("Access Denied");
     }
-
     if(user.equals("DudeUnoob") && (pass.equals("valorantgamerlol"))){
-      Scanner myBank2 = new Scanner(System.in);
+        Scanner myBank2 = new Scanner(System.in);
 
-      System.out.println("Would you like to withdraw something if no, write '0'");
+    System.out.println("Would you like to withdraw something, write 'yes' or 'no': ");
+    String yesno = myBank2.next();
 
-      double moni = myBank2.nextDouble();
-      bank.withdraw(moni);
-
-      System.out.println("You have " + bank.getBalance() + " dollars");
-    }
-      System.out.println("Have a great day! - coded by @DudeUnoob :)");
-    }
-    
-    
+    if (yesno.equals("yes")) {
       
-}
+        System.out.println("Type how much you would like to withdraw");
+        
+        double moni = myBank2.nextDouble();
+        bank.withdraw(moni);
+        
+        if(money < 0 )
+        {
+          System.out.println("Sorry your balance cannot be less then 0 have a great day");
+          return;
+        }
+        System.out.println("Your balance is " + bank.getBalance() + " dollars" + ",have a great day!");
+        
+      }
+      else if (yesno.equals("no")) {
+      
+        System.out.println("Your balance is " + bank.getBalance() + " dollars" + ",have a great day!");
+      } 
+    }
+    
+ }
+} 
